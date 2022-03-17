@@ -24,7 +24,7 @@ class Bibliotheque
     #[ORM\Column(type: 'string', length: 255)]
     private $type;
 
-    #[ORM\OneToMany(mappedBy: 'contenir', targetEntity: Exercice::class)]
+    #[ORM\OneToMany(mappedBy: 'bibliotheque', targetEntity: Exercice::class)]
     private $exercices;
 
     public function __construct()
@@ -85,7 +85,7 @@ class Bibliotheque
     {
         if (!$this->exercices->contains($exercice)) {
             $this->exercices[] = $exercice;
-            $exercice->setContenir($this);
+            $exercice->setBibliotheque($this);
         }
 
         return $this;
@@ -95,8 +95,8 @@ class Bibliotheque
     {
         if ($this->exercices->removeElement($exercice)) {
             // set the owning side to null (unless already changed)
-            if ($exercice->getContenir() === $this) {
-                $exercice->setContenir(null);
+            if ($exercice->getBibliotheque() === $this) {
+                $exercice->setBibliotheque(null);
             }
         }
 

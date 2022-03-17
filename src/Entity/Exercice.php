@@ -30,7 +30,7 @@ class Exercice
 
     #[ORM\ManyToOne(targetEntity: Bibliotheque::class, inversedBy: 'exercices')]
     #[ORM\JoinColumn(nullable: false)]
-    private $contenir;
+    private $bibliotheque;
 
     public function getId(): ?int
     {
@@ -97,14 +97,14 @@ class Exercice
         return $this;
     }
 
-    public function getContenir(): ?Bibliotheque
+    public function getBibliotheque(): ?Bibliotheque
     {
-        return $this->contenir;
+        return $this->bibliotheque;
     }
 
-    public function setContenir(?Bibliotheque $contenir): self
+    public function setBibliotheque(?Bibliotheque $bibliotheque): self
     {
-        $this->contenir = $contenir;
+        $this->bibliotheque = $bibliotheque;
 
         return $this;
     }

@@ -2,13 +2,19 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping\InheritanceType;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\DiscriminatorMap;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
+#[ORM\Table(name: 'user')]
+#[InheritanceType("SINGLE_TABLE")]
+#[DiscriminatorColumn(name: "discr", type: "string")]
+#[DiscriminatorMap(user: "User", patient: "Patient",kine:"Kine")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
