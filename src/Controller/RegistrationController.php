@@ -32,8 +32,11 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            // $user->setRoles(["ADMIN, KINE"]);
+
             $entityManager->persist($user);
             $entityManager->flush();
+            $this->addFlash("success", "Votre inscription a bien été enregistré");
             // do anything else you need here, like send an email
 
             return $userAuthenticator->authenticateUser(
