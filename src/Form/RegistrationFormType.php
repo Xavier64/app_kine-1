@@ -21,7 +21,6 @@ class RegistrationFormType extends AbstractType
         ->add('prenom')
         ->add('email')
         ->add('adresse')
-        ->add('photo')
         // ->add('roles')
             // ->add('agreeTerms', CheckboxType::class, [
             //     'mapped' => false,

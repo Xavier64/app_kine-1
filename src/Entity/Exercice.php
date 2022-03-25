@@ -16,7 +16,7 @@ class Exercice
     #[ORM\Column(type: 'text')]
     private $description;
 
-    #[ORM\Column(type: 'time')]
+    #[ORM\Column(type: 'integer')]
     private $duree;
 
     #[ORM\Column(type: 'integer')]
@@ -49,12 +49,12 @@ class Exercice
         return $this;
     }
 
-    public function getDuree(): ?\DateTimeInterface
+    public function getDuree(): ?int
     {
         return $this->duree;
     }
 
-    public function setDuree(\DateTimeInterface $duree): self
+    public function setDuree(int $duree): self
     {
         $this->duree = $duree;
 
@@ -107,5 +107,10 @@ class Exercice
         $this->bibliotheque = $bibliotheque;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+     return $this->duree;
     }
 }
