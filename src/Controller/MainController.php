@@ -17,4 +17,13 @@ class MainController extends AbstractController
  
     }
 
+    #[Route('/getData', name: 'app_getData')]
+    public function getData(): Response
+    {
+        return $this->json([
+            'data' => "ça marche paaaaaaas!!",
+            'data1' => "mais si ça marche!!",
+        ]);
+    }
+
 }
